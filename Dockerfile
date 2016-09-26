@@ -7,9 +7,9 @@
 FROM resin/rpi-raspbian:jessie
 MAINTAINER Macus
 
-RUN [ "cross-build-start" ]
-
-ENV DEBIAN_FRONTEND noninteractive
+# Base layer
+ENV ARCH=arm
+ENV CROSS_COMPILE=/usr/bin/
 
 ENV DOKUWIKI_VERSION 2016-06-26a
 ENV DOKUWIKI_CSUM 9b9ad79421a1bdad9c133e859140f3f2
@@ -38,8 +38,6 @@ RUN chown -R www-data:www-data /dokuwiki
 ADD dokuwiki.conf /etc/lighttpd/conf-available/20-dokuwiki.conf
 RUN lighty-enable-mod dokuwiki fastcgi accesslog
 RUN mkdir /var/run/lighttpd && chown www-data.www-data /var/run/lighttpd
-
-RUN [ "cross-build-end" ]
 
 EXPOSE 80
 
