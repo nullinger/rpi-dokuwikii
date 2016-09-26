@@ -13,12 +13,12 @@ ENV DOKUWIKI_CSUM 9b9ad79421a1bdad9c133e859140f3f2
 ENV LAST_REFRESHED 26. September 2016
 
 # Update & install packages & cleanup afterwards
-RUN echo "deb http://archive.raspberrypi.org/debian/ jessie main" >> /etc/apt/sources.list.d/raspberrypi.list && \
-	apt-get update && \
-	apt-get -y upgrade && \
-	apt-get -y install wget lighttpd php5-cgi php5-gd php5-ldap && \
-	apt-get clean autoclean && \
-	apt-get autoremove && \
+RUN echo "deb http://archive.raspberrypi.org/debian/ jessie main" >> /etc/apt/sources.list.d/raspberrypi.list \
+	apt-get update \
+	apt-get -y upgrade \
+	apt-get -y install wget lighttpd php5-cgi php5-gd php5-ldap \
+	apt-get clean autoclean \
+	apt-get autoremove \
 	rm -rf /var/lib/{apt,dpkg,cache,log}
 
 # Download & check & deploy dokuwiki & cleanup
