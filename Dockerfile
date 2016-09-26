@@ -12,6 +12,7 @@ ENV DOKUWIKI_CSUM 9b9ad79421a1bdad9c133e859140f3f2
 
 ENV LAST_REFRESHED 26. September 2016
 
+RUN [ "cross-build-start" ]
 # Update & install packages & cleanup afterwards
 RUN apt-get update && \
 	apt-get -y upgrade && \
