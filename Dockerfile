@@ -13,7 +13,12 @@ ENV DOKUWIKI_CSUM 9b9ad79421a1bdad9c133e859140f3f2
 ENV LAST_REFRESHED 26. September 2016
 
 # Update & install packages & cleanup afterwards
-RUN apt-get update && apt-get -y install wget lighttpd php5-cgi php5-gd php5-ldap && apt-get -y clean
+RUN 	apt-get update && \
+	apt-get -y upgrade && \
+	apt-get -y install wget lighttpd php5-cgi php5-gd php5-ldap && \
+	apt-get clean autoclean && \
+	apt-get autoremove && \
+	rm -rf /var/lib/{apt,dpkg,cache,log}
 
 # Download & check & deploy dokuwiki & cleanup
 RUN wget -q -O /dokuwiki.tgz "http://download.dokuwiki.org/src/dokuwiki/dokuwiki-$DOKUWIKI_VERSION.tgz" && \
