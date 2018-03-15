@@ -1,16 +1,16 @@
-# REV 0.1
-# AUTHOR:       David E
+# REV 0.2
 # DESCRIPTION:	Image with DokuWiki & lighttpd
-# TO_BUILD:	docker build -t macus/dokuwikii
-# TO_RUN:	docker run -d -p 80:80 --name my_wiki macus/rpi-dokuwikii
+# FORKED FROM:  https://github.com/gsichtl/rpi-dokuwikii
+# TO_BUILD:	docker build -t as/dokuwiki:0.2
+# TO_RUN:	docker run -d -p 80:80 --name my_wiki as/dokuwiki:0.2
    
 FROM resin/rpi-raspbian:jessie
-MAINTAINER Macus
+MAINTAINER as
 
-ENV DOKUWIKI_VERSION 2016-06-26a
-ENV DOKUWIKI_CSUM 9b9ad79421a1bdad9c133e859140f3f2
+ENV DOKUWIKI_VERSION 2017-02-19e
+ENV DOKUWIKI_CSUM 09bf175f28d6e7ff2c2e3be60be8c65f
 
-ENV LAST_REFRESHED 26. September 2016
+ENV LAST_REFRESHED 15.03.2018
 
 # Update & install packages & cleanup afterwards
 RUN 	apt-get update && \
